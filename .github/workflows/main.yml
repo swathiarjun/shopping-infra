@@ -9,12 +9,14 @@ on:
         options:
           - t2.small
           - t2.micro
+        default: "t2.micro"
 
       instance_ami:
         type: string
         description: "instance ami id"
         required: true
-
+        default: "ami-0a0f1259dd1c90938" 
+ 
 jobs:
   build:
     runs-on: ubuntu-latest

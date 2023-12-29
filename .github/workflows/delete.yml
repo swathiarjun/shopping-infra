@@ -26,14 +26,14 @@ jobs:
           terraform init \
             --backend-config="bucket=${{secrets.PROD_S3_BUCKET}}" \
             --backend-config="key=terraform.tfstate" \
-            --backend-config="region=${{secrets.PROD_REGION }}" \
+            --backend-config="region=${{secrets.PROD_REGION}}" \
             --backend-config="access_key=${{ secrets.PROD_ACCESS_KEY}}" \
             --backend-config="secret_key=${{ secrets.PROD_SECRET_KEY}}"
         shell: bash
 
       - name: "Terraform Destroy"
         run: |
-          terraform destroy 
+          terraform destroy \
             -var "instance_type=${{ github.event.inputs.instance_type }}" \
             -var "instance_ami=${{ github.event.inputs.instance_ami }}" \
             -auto-approve
